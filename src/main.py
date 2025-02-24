@@ -104,8 +104,18 @@ class Main:
                                 # draw
                                 game.show_bg(screen)
                                 game.show_pieces(screen)
+                                # checkmate ?
+                                if game.check_game_over():
+                                    game.reset()
+                                    screen = self.screen
+                                    game = self.game
+                                    board = self.game.board
+                                    ai = self.game.ai
+                                    dragger = self.game.dragger
+                                else:
                                 # next -> AI
-                                game.next_turn()
+                                    game.next_turn()
+
                     
                     game.unselect_piece()
                     dragger.undrag_piece()

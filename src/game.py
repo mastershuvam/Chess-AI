@@ -111,6 +111,34 @@ class Game:
             # draw
             pygame.draw.rect(surface, color, rect, 3)
 
+    # ------------
+    # WIN METHODS
+    # ------------
+
+    def is_checkmate(self, color):
+        moves = self.board.get_moves(color)
+        if not moves:
+            return True
+        return False
+
+    def is_stalemate(self, color):
+        moves = self.board.get_moves(color)
+        if not moves:
+            return True
+        return False
+
+    def check_game_over(self):
+        if self.is_checkmate('white'):
+            print("Black wins by checkmate!")
+            return True
+        elif self.is_checkmate('black'):
+            print("White wins by checkmate!")
+            return True
+        elif self.is_stalemate('white') or self.is_stalemate('black'):
+            print("Stalemate!")
+            return True
+        return False
+
     # -------------
     # OTHER METHODS
     # -------------
